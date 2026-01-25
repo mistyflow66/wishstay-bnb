@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <title>煦願民宿 | Wish Homestay - 宜蘭三星包棟推薦</title>
+  <meta name="description" content="煦願民宿於2023年全新開幕，座落於悠閒靜謐的三星鄉。遠眺群山、俯瞰水田，享受片刻靜好時光。"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-brick: #b06b58; 
+      --bg-beige: #f9f9f9;
+    }
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-beige); color: #333; }
+    .btn-brick { background-color: var(--primary-brick); transition: all 0.3s ease; }
+    .btn-brick:hover { background-color: #965a4a; transform: translateY(-2px); }
+    .banner-section { height: 70vh; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+    .room-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; margin-bottom: 2.5rem; }
+    .room-img { width: 100%; height: 300px; background-size: cover; background-position: center; }
+    .tag { display: inline-block; padding: 4px 12px; background-color: #f3f4f6; border-radius: 4px; font-size: 0.85rem; margin-right: 6px; margin-bottom: 6px; color: #666; }
+    .price-tag { color: var(--primary-brick); font-weight: bold; font-size: 1.1rem; }
+    @media (min-width: 768px) { .room-card { flex-direction: row; min-height: 400px; } .room-img-wrapper { width: 50%; } .room-content { width: 50%; } }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; z-index: 1000; align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+  </style>
+</head>
+
+<body>
+
+  <section class="banner-section" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('✅填入首頁背景圖網址');">
+    <div class="px-6">
+      <h2 class="text-4xl md:text-7xl font-light tracking-[0.2em] mb-4">煦願民宿</h2>
+      <p class="text-lg md:text-xl font-light mb-10 opacity-90 tracking-[0.4em]">WISH HOMESTAY</p>
+      <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white px-10 py-4 rounded-full text-lg shadow-lg tracking-widest">
+        <i class="fab fa-line mr-2"></i>立即預訂房型
+      </a>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-2xl font-medium mb-8 tracking-widest text-stone-700">想用煦暖的願望照亮你</h3>
+      <div class="text-gray-500 leading-loose tracking-widest space-y-2 mb-12">
+        <p>在微雨的林中相遇</p>
+        <p>沐風而至 聽星辰低語</p>
+        <p>日出後 心也溫柔盈滿</p>
+        <p class="text-[#B06B58] font-bold">真謝謝你呀</p>
+      </div>
+      <p class="text-gray-600 text-sm md:text-base leading-relaxed border-t pt-10">
+        煦願民宿於2023年5月全新開幕，座落於悠閒靜謐的三星鄉。<br>
+        遠眺群山、俯瞰水田，田園與屋舍交織出自然的詩意風景。<br>
+        鄰近落雨松秘境，讓您放慢步調，享受片刻靜好時光。
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-center text-3xl font-light mb-12 tracking-widest text-[#B06B58]">精選房型</h2>
+
+    <article class="room-card">
+      <div class="room-img-wrapper"><div class="room-img" style="background-image:url('✅201照片網址')"></div></div>
+      <div class="room-content p-8 flex flex-col justify-center">
+        <h3 class="text-2xl font-bold mb-2">201 雙人房</h3>
+        <p class="text-sm text-gray-400 mb-6">加大雙人床 × 1 | 陽台 | 獨立衛浴</p>
+        <div class="mb-6">
+          <span class="tag">有線頻道 / Disney+</span><span class="tag">獨立筒床墊</span><span class="tag">乾濕分離</span>
+        </div>
+        <div class="mb-8 border-l-4 border-[#B06B58] pl-4">
+          <p class="text-sm">平日 <span class="price-tag">NT$2200</span> / 假日 <span class="price-tag">NT$3200</span></p>
+          <p class="text-xs text-gray-500 mt-1">加床平日 $500/人，假日 $1000/人</p>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white text-center py-3 rounded-lg">LINE 詢問空房</a>
+      </div>
+    </article>
+
+    <article class="room-card">
+      <div class="room-img-wrapper md:order-2"><div class="room-img" style="background-image:url('✅202照片網址')"></div></div>
+      <div class="room-content p-8 flex flex-col justify-center md:order-1">
+        <h3 class="text-2xl font-bold mb-2">202 四人房</h3>
+        <p class="text-sm text-gray-400 mb-6">標準雙人床 × 2 | 陽台 | 獨立衛浴</p>
+        <div class="mb-6">
+          <span class="tag">適合家庭</span><span class="tag">舒適採光</span><span class="tag">Disney+</span>
+        </div>
+        <div class="mb-8 border-l-4 border-[#B06B58] pl-4">
+          <p class="text-sm">平日 <span class="price-tag">NT$4000</span> / 假日 <span class="price-tag">NT$4800</span></p>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white text-center py-3 rounded-lg">LINE 詢問空房</a>
+      </div>
+    </article>
+
+    <article class="room-card">
+      <div class="room-img-wrapper"><div class="room-img" style="background-image:url('✅301照片網址')"></div></div>
+      <div class="room-content p-8 flex flex-col justify-center">
+        <h3 class="text-2xl font-bold mb-2">301 八人房</h3>
+        <p class="text-sm text-gray-400 mb-6">加大雙人床 × 2 + 標準雙人床 × 2</p>
+        <div class="mb-6">
+          <span class="tag">包棟首選</span><span class="tag">寬闊空間</span><span class="tag">液晶電視</span>
+        </div>
+        <div class="mb-8 border-l-4 border-[#B06B58] pl-4">
+          <p class="text-sm">平日 <span class="price-tag">NT$7000</span> / 假日 <span class="price-tag">NT$7800</span></p>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white text-center py-3 rounded-lg">LINE 詢問空房</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="bg-stone-100 py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-center text-2xl font-medium mb-12 tracking-widest">設施與服務</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#B06B58] mb-4 text-center border-b pb-2"><i class="fas fa-couch mr-2"></i>溫馨客廳</h4>
+          <ul class="space-y-2 text-gray-600">
+            <li>65吋液晶電視 (Disney+)</li>
+            <li>電動麻將桌、多款桌遊</li>
+            <li>藍芽麥克風音箱</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#B06B58] mb-4 text-center border-b pb-2"><i class="fas fa-utensils mr-2"></i>廚房設備</h4>
+          <ul class="space-y-2 text-gray-600">
+            <li>IH爐、冷熱飲水機、冰箱</li>
+            <li>湯鍋、碗盤餐具一應俱全</li>
+            <li class="text-xs text-stone-400">※衛生考量不提供調味料、油品</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#B06B58] mb-4 text-center border-b pb-2"><i class="fas fa-leaf mr-2"></i>減塑政策</h4>
+          <ul class="space-y-2 text-gray-600">
+            <li>提供浴巾、洗髮沐浴乳</li>
+            <li class="font-bold text-stone-800">⚠️不提供牙刷、牙膏</li>
+            <li>前庭可停3台車</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#2d2d2d] text-white py-16 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div>
+        <h3 class="text-2xl mb-6 tracking-widest">煦願民宿</h3>
+        <p class="text-stone-400 text-sm leading-relaxed mb-6">宜蘭縣民宿2387號<br>宜蘭縣三星鄉大埔中路233巷91弄17號</p>
+        <div class="flex gap-4">
+          <a href="https://maps.app.goo.gl/1UWWtTmhoLyNzZSS8" class="text-white hover:text-[#B06B58]"><i class="fas fa-map-marked-alt text-2xl"></i></a>
+          <a href="https://line.me/R/ti/p/@760hpexb" class="text-white hover:text-[#4cc764]"><i class="fab fa-line text-2xl"></i></a>
+        </div>
+      </div>
+      <div class="text-sm space-y-3 text-stone-400">
+        <p><i class="fas fa-envelope mr-2"></i> wish23317@gmail.com</p>
+        <p><i class="fas fa-car mr-2"></i> 民宿前庭停車位 (可停3台)</p>
+        <p><i class="fas fa-clock mr-2"></i> Check-in: 15:00 / Check-out: 11:00</p>
+      </div>
+    </div>
+    <div class="text-center mt-12 pt-8 border-t border-stone-700 text-xs opacity-40">
+      © 2026 Wish Homestay. All Rights Reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
+
