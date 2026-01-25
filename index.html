@@ -59,11 +59,20 @@
       .room-content-wrapper { width: 45%; display: flex; flex-direction: column; justify-content: center; }
     }
     .tag { display: inline-block; padding: 6px 14px; background-color: #f3f4f6; border-radius: 4px; font-size: 0.95rem; margin-right: 8px; margin-bottom: 8px; color: #4b5563; }
-    /* Banner */
+   /* Banner */
     .banner-section { 
       height: 60vh; min-height: 450px; display: flex; align-items: center; justify-content: center;
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/building.webp');
-      background-size: cover; background-position: center; color: white; text-align: center;
+      background-size: cover; 
+      background-position: center; /* 手機版預設置中 */
+      color: white; text-align: center;
+    }
+
+    /* 電腦版微調：將圖片視角下移至重點區域 */
+    @media (min-width: 768px) {
+      .banner-section {
+        background-position: center 85%; 
+      }
     }
 
     .btn-brick { background-color: var(--primary-brick); transition: all 0.3s ease; }
@@ -397,7 +406,7 @@
         <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100">
           <h4 class="text-xl font-bold mb-4 text-[#B06B58]"><i class="fa-solid fa-gamepad mr-2"></i>娛樂與親子友善</h4>
           <ul class="space-y-2 text-gray-600">
-            <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>娛樂設備：</strong>電動麻將桌、藍芽麥克風音箱</li>
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>親友同樂：</strong>電動麻將桌、藍芽歡唱音箱</li>
             <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>兒童最愛：</strong>跳跳馬、多款精選桌遊</li>
             <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>戶外空間：</strong>專屬停車位、獨立陽台</li>
 		<li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>烤肉設施：</strong>器具齊全、可代訂食材</li>
