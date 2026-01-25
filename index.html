@@ -3,191 +3,307 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>煦願民宿 | Wish Homestay - 宜蘭三星包棟推薦</title>
+  <title>房型介紹 | 煦願民宿 Wish Homestay - 宜蘭三星包棟首選</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root { --primary-brick: #b06b58; --bg-beige: #f9f9f9; }
-    body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-beige); color: #333; scroll-behavior: smooth; }
-    .btn-brick { background-color: var(--primary-brick); transition: all 0.3s ease; }
-    .btn-brick:hover { background-color: #965a4a; transform: translateY(-2px); }
+    :root { 
+      --primary-brick: #b06b58; 
+      --bg-beige: #f9f9f9; 
+      --reading-max: 68ch;
+      --reading-color: #4b5563;
+    }
+    body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-beige); color: #333; scroll-behavior: smooth; line-height: 1.8; }
     
-    .hero-section { 
-      height: 80vh; 
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('✅填入首頁大圖網址');
-      background-size: cover; background-position: center; 
-      display: flex; align-items: center; justify-content: center; color: #fff; text-align: center;
+    .reading { color: var(--reading-color); line-height: 1.9; letter-spacing: .01em; word-break: break-word; }
+    .subcopy { color:#6b7280; line-height:1.8; }
+    .text-justify { text-align: left; }
+    @media (min-width: 768px) { .text-justify { text-align: justify; text-justify: inter-ideograph; } }
+
+    /* Banner */
+    .banner-section { 
+      height: 60vh; min-height: 450px; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070');
+      background-size: cover; background-position: center; color: white; text-align: center;
     }
 
-    .section-title { position: relative; padding-bottom: 1rem; margin-bottom: 3rem; text-align: center; font-size: 1.875rem; letter-spacing: 0.2em; color: #444; }
-    .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 2px; background: var(--primary-brick); }
+    .btn-brick { background-color: var(--primary-brick); transition: all 0.3s ease; }
+    .btn-brick:hover { background-color: #965a4a; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid white; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); transition: all 0.3s ease; }
+    .btn-outline:hover { background-color: white; color: black; }
 
-    .room-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; margin-bottom: 2.5rem; }
-    @media (min-width: 768px) { .room-card { flex-direction: row; min-height: 400px; } .room-img-wrapper, .room-content { width: 50%; } }
-    .room-img { width: 100%; height: 300px; background-size: cover; background-position: center; }
-    
-    /* 價目表樣式 */
-    .price-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
-    .price-table th { background: var(--primary-brick); color: #fff; padding: 12px; font-weight: 500; }
-    .price-table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
+    /* Room Rows */
+    .room-row { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; margin-bottom: 2rem; }
+    .room-img { width: 100%; height: 250px; background-size: cover; background-position: center; }
+    @media (min-width: 768px) {
+      .room-row { flex-direction: row; min-height: 420px; align-items: stretch; }
+      .room-img-wrapper { width: 55%; min-height: 420px; }
+      .room-img { height: 100%; min-height: 420px; }
+      .room-content-wrapper { width: 45%; display: flex; flex-direction: column; justify-content: center; }
+    }
+    .tag { display: inline-block; padding: 6px 14px; background-color: #f3f4f6; border-radius: 4px; font-size: 0.95rem; margin-right: 8px; margin-bottom: 8px; color: #4b5563; }
 
-    .info-card { background: #fff; padding: 2rem; border-radius: 12px; height: 100%; box-shadow: 0 2px 15px rgba(0,0,0,0.03); }
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; z-index: 9999; align-items: center; justify-content: center; cursor: pointer; }
-    .lightbox.active { display: flex; }
+    /* Price Table & Grid */
+    .price-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 1024px) { .price-grid { grid-template-columns: 2fr 1fr; align-items: stretch; } }
+    .price-table-wrap { height: 100%; overflow: hidden; border-radius: 14px; border: 1px solid #e5e7eb; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.05); }
+    .price-table { width: 100%; border-collapse: collapse; height: 100%; }
+    .price-table th, .price-table td { padding: 18px; border: 1px solid #eee; text-align: center; }
+    .price-table th { background-color: #f8f9fa; font-weight: 700; color: #374151; }
+    .price-highlight { color: var(--primary-brick); font-weight: 700; font-size: 1.1rem; }
+    .price-note-card { height: 100%; border-radius: 14px; border: 1px solid #e5e7eb; background: #fff; padding: 24px; box-shadow: 0 6px 18px rgba(0,0,0,.05); }
+    .price-note-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; border-left: 4px solid var(--primary-brick); padding-left: 12px; }
+
+    /* Policy 樣式 */
+    .policy-header { border-left: 4px solid var(--primary-brick); padding-left: 1rem; margin-bottom: 1.5rem; font-weight: 700; color: #1f2937; }
+    .policy-box { background: #f9fafb; border: 1px solid #eef2f7; border-radius: 14px; padding: 25px; margin-bottom: 2rem; }
+
+    /* Card Shadow for Reviews */
+    .card-shadow { box-shadow: 0 6px 16px rgb(0 0 0 / 0.12), 0 20px 32px rgb(0 0 0 / 0.08); }
+
+    /* Gallery & Lightbox */
+    .ps-gallery .ps-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,.08); background: #eee; }
+    .ps-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .ps-item:hover img { transform: scale(1.08); }
+    .ps-badge { position:absolute; left:12px; bottom:12px; padding:6px 10px; font-size:12px; color:#fff; border-radius:999px; background: rgba(0,0,0,.45); backdrop-filter: blur(6px); }
+    .ps-lightbox { position: fixed; inset: 0; display: none; z-index: 9999; }
+    .ps-lightbox.is-open { display: block; }
+    .ps-lightbox-backdrop { position:absolute; inset:0; background: rgba(0,0,0,.85); }
+    .ps-lightbox-panel { position: absolute; inset: 24px; display:flex; align-items:center; justify-content:center; }
+    .ps-figure { max-width: min(1000px, 92vw); max-height: 80vh; border-radius: 18px; overflow: hidden; background: #000; position: relative; }
+    #psLightboxImg { width: 100%; height: auto; max-height: 70vh; object-fit: contain; }
+    .ps-caption { padding: 15px; color: #fff; text-align: center; background: rgba(0,0,0,0.5); }
+    .ps-close { position:absolute; top: 18px; right: 18px; color:#fff; font-size: 24px; z-index: 10; cursor: pointer; }
   </style>
 </head>
 
 <body>
 
-  <section class="hero-section">
-    <div class="px-6">
-      <h1 class="text-4xl md:text-6xl font-light tracking-[0.2em] mb-6">宜蘭三星，煦暖的願望照亮你</h1>
-      <p class="text-lg md:text-xl font-light mb-10 opacity-80 tracking-[0.3em]">煦願民宿 ‧ WISH HOMESTAY</p>
-      <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white px-10 py-4 rounded-full text-lg tracking-widest shadow-xl">LINE 預約訂房</a>
-    </div>
-  </section>
-
-  <section id="rooms" class="max-w-6xl mx-auto px-4 py-24">
-    <h2 class="section-title">精選房型</h2>
-
-    <article class="room-card">
-      <div class="room-img-wrapper"><div class="room-img" style="background-image:url('✅201照片網址')"></div></div>
-      <div class="room-content p-8 md:p-12 flex flex-col justify-center">
-        <h3 class="text-2xl font-bold mb-4">201 雙人房</h3>
-        <ul class="text-gray-500 space-y-2 mb-8 text-sm">
-          <li><i class="fas fa-bed mr-2 text-stone-400"></i> 加大雙人床 ×1 (單人沙發床可加1位)</li>
-          <li><i class="fas fa-expand mr-2 text-stone-400"></i> 獨立陽台 / 乾濕分離衛浴</li>
-          <li><i class="fas fa-tv mr-2 text-stone-400"></i> 液晶電視 (有線頻道、Disney+)</li>
-          <li><i class="fas fa-wind mr-2 text-stone-400"></i> 獨立空調 / 吹風機 / 浴巾</li>
-        </ul>
-        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white text-center py-3 rounded-lg">查看空房</a>
-      </div>
-    </article>
-
-    <article class="room-card">
-      <div class="room-img-wrapper md:order-2"><div class="room-img" style="background-image:url('✅202照片網址')"></div></div>
-      <div class="room-content p-8 md:p-12 flex flex-col justify-center md:order-1">
-        <h3 class="text-2xl font-bold mb-4">202 四人房</h3>
-        <ul class="text-gray-500 space-y-2 mb-8 text-sm">
-          <li><i class="fas fa-bed mr-2 text-stone-400"></i> 標準雙人床 ×2</li>
-          <li><i class="fas fa-expand mr-2 text-stone-400"></i> 獨立陽台 / 舒適採光</li>
-          <li><i class="fas fa-tv mr-2 text-stone-400"></i> 液晶電視 (Disney+) / 獨立筒床墊</li>
-          <li><i class="fas fa-bath mr-2 text-stone-400"></i> 乾濕分離衛浴 / 提供沐浴乳、洗髮乳</li>
-        </ul>
-        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white text-center py-3 rounded-lg">查看空房</a>
-      </div>
-    </article>
-
-    <article class="room-card">
-      <div class="room-img-wrapper"><div class="room-img" style="background-image:url('✅301照片網址')"></div></div>
-      <div class="room-content p-8 md:p-12 flex flex-col justify-center">
-        <h3 class="text-2xl font-bold mb-4">301 八人房</h3>
-        <ul class="text-gray-500 space-y-2 mb-8 text-sm">
-          <li><i class="fas fa-users mr-2 text-stone-400"></i> 加大雙人床×2 + 標準雙人床×2</li>
-          <li><i class="fas fa-wifi mr-2 text-stone-400"></i> 無線WIFI上網 / 寬敞活動空間</li>
-          <li><i class="fas fa-tv mr-2 text-stone-400"></i> 液晶電視 / 獨立空調 / 吹風機</li>
-          <li><i class="fas fa-info-circle mr-2 text-stone-400"></i> 適合大型家庭或團體包棟</li>
-        </ul>
-        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick text-white text-center py-3 rounded-lg">查看空房</a>
-      </div>
-    </article>
-  </section>
-
-  <section class="py-20 bg-stone-100 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="section-title">房價資訊一覽表</h2>
-      <div class="overflow-x-auto shadow-lg rounded-xl">
-        <table class="price-table">
-          <thead>
-            <tr>
-              <th>房型名稱</th>
-              <th>入住人數</th>
-              <th>平日價</th>
-              <th>假日價</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="font-bold">201 雙人房</td>
-              <td>2人</td>
-              <td>NT$ 2,200</td>
-              <td>NT$ 3,200</td>
-            </tr>
-            <tr>
-              <td class="font-bold">202 四人房</td>
-              <td>4人</td>
-              <td>NT$ 4,000</td>
-              <td>NT$ 4,800</td>
-            </tr>
-            <tr>
-              <td class="font-bold">301 八人房</td>
-              <td>8人</td>
-              <td>NT$ 7,000</td>
-              <td>NT$ 7,800</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-6 text-sm text-gray-500 space-y-1">
-        <p>※ 平日：週日 ~ 週四</p>
-        <p>※ 假日：週五、週六、國定假日及連續假期</p>
-        <p>※ 加床服務：平日 $500/人，假日 $1,000/人 (僅部分房型提供)</p>
+  <section class="banner-section">
+    <div class="px-6 max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-light tracking-[0.2em] mb-4">宜蘭三星・煦願民宿</h2>
+      <p class="text-lg md:text-xl font-light mb-10 opacity-90 tracking-widest">在群山與稻田之間，體驗最純粹的蘭陽時光</p>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <a href="https://maps.app.goo.gl/1UWWtTmhoLyNzZSS8" target="_blank" class="btn-outline w-full md:w-auto text-white px-8 py-3 rounded-full text-base font-medium tracking-widest">Google 導航</a>
+        <a href="https://line.me/R/ti/p/@760hpexb" target="_blank" class="btn-brick w-full md:w-auto text-white px-10 py-3 rounded-full text-lg font-medium shadow-lg tracking-widest">立即預訂</a>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-outline w-full md:w-auto text-white px-8 py-3 rounded-full text-base font-medium tracking-widest">聯絡我們</a>
       </div>
     </div>
   </section>
 
-  <section class="py-24 px-6">
+  <header class="py-12 md:py-16 text-center bg-white border-b border-gray-100">
+    <div class="inline-flex flex-col items-center gap-3">
+      <span class="text-xs font-semibold tracking-[0.25em] text-[#B06B58] bg-[#B06B58]/10 px-3 py-1 rounded-full">ROOMS</span>
+      <h1 class="text-3xl md:text-5xl font-semibold tracking-[0.14em] text-gray-900">房型介紹</h1>
+      <div class="w-16 h-[3px] bg-[#B06B58] rounded-full"></div>
+      <p class="subcopy text-sm md:text-base tracking-widest">Explore Our Rooms</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16">
+    <article class="room-row">
+      <div class="room-img-wrapper"><div class="room-img" style="background-image: url('✅201照片');"></div></div>
+      <div class="room-content-wrapper p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-medium mb-4 text-gray-800">201 雙人房</h3>
+        <div class="reading"><p class="text-base text-justify">清晨的第一道陽光照進房間，伴隨著新鮮的空氣，營造出一個完美的開始，喚醒心靈的平靜。</p></div>
+        <div class="my-6">
+          <span class="tag">加大雙人床 ×1</span>
+          <span class="tag">獨立陽台</span>
+          <span class="tag">乾濕分離衛浴</span>
+          <span class="tag">Disney+ 頻道</span>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
+      </div>
+    </article>
+
+    <article class="room-row">
+      <div class="room-img-wrapper"><div class="room-img" style="background-image: url('✅202照片');"></div></div>
+      <div class="room-content-wrapper p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-medium mb-4 text-gray-800">202 四人房</h3>
+        <div class="reading"><p class="text-base text-justify">旅人們圍坐一起，分享各自的旅行故事和笑聲，既溫暖且溫馨，原來在外也能有家的感覺。</p></div>
+        <div class="my-6">
+          <span class="tag">標準雙人床 ×2</span>
+          <span class="tag">獨立陽台</span>
+          <span class="tag">採光極佳</span>
+          <span class="tag">無線上網</span>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
+      </div>
+    </article>
+
+    <article class="room-row">
+      <div class="room-img-wrapper"><div class="room-img" style="background-image: url('✅301照片');"></div></div>
+      <div class="room-content-wrapper p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-medium mb-4 text-gray-800">301 八人房</h3>
+        <div class="reading"><p class="text-base text-justify">適合大型家庭或好友聚會，在寬敞的空間裡共創難忘的旅途回憶，體驗內心的平靜與自我對話。</p></div>
+        <div class="my-6">
+          <span class="tag">加大床×2 + 標準床×2</span>
+          <span class="tag">超大活動空間</span>
+          <span class="tag">適合包棟</span>
+          <span class="tag">獨立空調</span>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="py-16 md:py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-medium mb-12 tracking-widest text-gray-800">旅人真實口碑 <br>(85 則 5 星評論滿意推薦)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white p-8 rounded-2xl card-shadow text-left">
+          <h4 class="font-bold text-gray-800 mb-2">Wei Emily</h4>
+          <div class="flex items-center mb-3 text-yellow-400">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic mb-4">"雖然同伴臨時缺席，老闆娘用心準備的驚喜早餐與手工包粽，溫暖了我的旅程。彷彿家一般的親切與溫馨。"</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl card-shadow text-left">
+          <h4 class="font-bold text-gray-800 mb-2">趙家兒</h4>
+          <div class="flex items-center mb-3 text-yellow-400">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic mb-4">"非常親切的民宿老闆和闆娘，環境很乾淨也很漂亮，收藏品很精緻，有合格民宿認證很讓人安心。"</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl card-shadow text-left">
+          <h4 class="font-bold text-gray-800 mb-2">沈福霖</h4>
+          <div class="flex items-center mb-3 text-yellow-400">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-gray-600 italic mb-4">"提供了安靜且放鬆心情的環境，在宜蘭三星能找到這麼棒的包棟空間，讓旅程感到非常溫暖與支持。"</p>
+        </div>
+      </div>
+      <a href="https://www.google.com/maps/place/%E5%85%AD%E7%94%B2%E8%A7%80%E7%94%B0%E6%B0%91%E5%AE%BF+-+%E5%85%AD%E7%94%B2%E6%B0%91%E5%AE%BF%EF%BC%8E%E5%AE%98%E7%94%B0%E6%B0%91%E5%AE%BF/data=!4m2!3m1!1s0x0:0x26623baaf423afca?sa=X&ved=1t:2428&ictx=111" target="_blank" class="btn-brick inline-block text-white px-12 py-4 rounded-full text-lg shadow-xl">查看更多 Google 評論</a>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 px-6">
     <div class="max-w-6xl mx-auto">
-      <h2 class="section-title">公共空間與設施</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="group relative cursor-pointer overflow-hidden rounded-xl aspect-[4/3]" onclick="openLightbox('✅設施1', '前庭可停3台車，附近路邊也好停車')">
-          <img src="✅設施1" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
-          <div class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">專屬車位</div>
-        </div>
-        <div class="group relative cursor-pointer overflow-hidden rounded-xl aspect-[4/3]" onclick="openLightbox('✅設施2', '電動麻將桌、桌遊、藍芽麥克風音箱')">
-          <img src="✅設施2" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
-          <div class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">休閒設備</div>
-        </div>
-        <div class="group relative cursor-pointer overflow-hidden rounded-xl aspect-[4/3]" onclick="openLightbox('✅設施3', '廚房提供IH爐、冰箱、飲水機、餐具')">
-          <img src="✅設施3" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
-          <div class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">廚房空間</div>
-        </div>
-        <div class="group relative cursor-pointer overflow-hidden rounded-xl aspect-[4/3]" onclick="openLightbox('✅設施4', '65吋液晶電視 (有線頻道、Disney+)')">
-          <img src="✅設施4" class="object-cover w-full h-full group-hover:scale-110 transition duration-500">
-          <div class="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded">溫馨客廳</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20 bg-stone-100 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="info-card">
-          <h3 class="text-xl font-bold mb-6 text-[#B06B58] flex items-center">
-            <i class="fas fa-calendar-check mr-3"></i> 訂房須知與規定
-          </h3>
-          <ul class="space-y-4 text-gray-600 text-sm leading-relaxed">
-            <li>‧ 預訂請加入官方 LINE 聯繫確認空房狀態。</li>
-            <li>‧ 訂金為房價總額之 50%，請於預訂後兩日內完成匯款以保留房型。</li>
-            <li>‧ 匯款後請提供帳號後五碼以利核對，完成核對即訂房成功。</li>
-            <li>‧ 配合政府減塑政策，即日起<span class="text-red-500 font-bold underline">不再提供一次性備品（牙刷、牙膏）</span>，請自行攜帶。</li>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        <div>
+          <div class="text-[#B06B58] mb-6 flex justify-center">
+            <div class="w-14 h-14 rounded-2xl bg-[#B06B58]/10 flex items-center justify-center"><i class="fa-solid fa-bed text-2xl"></i></div>
+          </div>
+          <h4 class="text-xl font-medium mb-4">房內設備</h4>
+          <ul class="text-gray-500 text-base space-y-2">
+            <li>冷暖空調、液晶電視</li>
+            <li>獨立乾濕分離衛浴</li>
+            <li>吹風機、電熱水壺</li>
           </ul>
         </div>
+        <div>
+          <div class="text-[#B06B58] mb-6 flex justify-center">
+            <div class="w-14 h-14 rounded-2xl bg-[#B06B58]/10 flex items-center justify-center"><i class="fa-solid fa-mug-hot text-2xl"></i></div>
+          </div>
+          <h4 class="text-xl font-medium mb-4">公共設施</h4>
+          <ul class="text-gray-500 text-base space-y-2">
+            <li>飲水機、公用冰箱</li>
+            <li>電動麻將桌、KTV設備</li>
+            <li>戶外停車空間</li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-[#B06B58] mb-6 flex justify-center">
+            <div class="w-14 h-14 rounded-2xl bg-[#B06B58]/10 flex items-center justify-center"><i class="fa-solid fa-circle-info text-2xl"></i></div>
+          </div>
+          <h4 class="text-xl font-medium mb-4">服務須知</h4>
+          <ul class="text-gray-500 text-base space-y-2">
+            <li>包棟歡迎直接洽詢LINE</li>
+            <li>代訂烤肉食材服務</li>
+            <li>旅遊諮詢與建議</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="info-card">
-          <h3 class="text-xl font-bold mb-6 text-[#B06B58] flex items-center">
-            <i class="fas fa-home mr-3"></i> 住房須知 (House Rules)
-          </h3>
-          <ul class="space-y-4 text-gray-600 text-sm leading-relaxed">
-            <li>‧ 進房時間 (Check-in)：15:00 後 / 退房時間 (Check-out)：11:00 前。</li>
-            <li>‧ 室內全面禁菸、禁止嚼食檳榔，違者需支付清潔費用。</li>
-            <li>‧ 廚房可供簡單開伙，但<span class="font-bold">不提供調味料與油品</span>，使用後請自行清潔。</li>
-            <li>‧ 晚上 22:00 後請降低音量，尊重鄰里安寧。</li>
-            <li>‧ 民宿位於巷弄內，前庭可停3台車，請依序停放。</li>
+  <section class="py-16 px-6 bg-[#f7f7f7]">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <h3 class="text-2xl font-medium tracking-widest text-gray-800">民宿環境相簿</h3>
+        <p class="text-sm text-gray-500 mt-3">點擊照片可放大查看</p>
+      </div>
+      <div class="ps-gallery grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="ps-item" onclick="openLightbox('🖼️第一張圖片網址', '🏠 民宿外觀')">
+          <img src="🖼️第一張圖片網址" alt="民宿外觀"><span class="ps-badge">民宿外觀</span>
+        </div>
+        <div class="ps-item" onclick="openLightbox('🖼️第二張圖片網址', '🛋️ 客廳空間')">
+          <img src="🖼️第二張圖片網址" alt="客廳空間"><span class="ps-badge">客廳空間</span>
+        </div>
+        <div class="ps-item" onclick="openLightbox('🖼️第三張圖片網址', '🍳 開放式廚房')">
+          <img src="🖼️第三張圖片網址" alt="開放式廚房"><span class="ps-badge">開放式廚房</span>
+        </div>
+        <div class="ps-item" onclick="openLightbox('🖼️第四張圖片網址', '🀄 娛樂設施')">
+          <img src="🖼️第四張圖片網址" alt="娛樂設施"><span class="ps-badge">娛樂設施</span>
+        </div>
+        <div class="ps-item" onclick="openLightbox('🖼️第五張圖片網址', '🌳 戶外庭園')">
+          <img src="🖼️第五張圖片網址" alt="戶外庭園"><span class="ps-badge">戶外庭園</span>
+        </div>
+        <div class="ps-item" onclick="openLightbox('🖼️第六張圖片網址', '🚲 周邊景色')">
+          <img src="🖼️第六張圖片網址" alt="周邊景色"><span class="ps-badge">周邊景色</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-[#f7f7f7] border-y border-gray-100">
+    <div class="mx-auto" style="max-width: 1100px;">
+      <h2 class="text-center text-3xl font-medium mb-12 tracking-widest text-gray-800">房價資訊一覽表</h2>
+      <div class="price-grid">
+        <div class="price-left">
+          <div class="price-table-wrap">
+            <table class="price-table">
+              <thead><tr class="bg-gray-50"><th>房型名稱</th><th>參考價格/日</th></tr></thead>
+              <tbody>
+                <tr><td class="font-medium">201 雙人房</td><td class="price-highlight">NT$ 2,200 起</td></tr>
+                <tr><td class="font-medium">202 四人房</td><td class="price-highlight">NT$ 4,000 起</td></tr>
+                <tr><td class="font-medium">301 八人房</td><td class="price-highlight">NT$ 7,000 起</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <aside class="price-right">
+          <div class="price-note-card">
+            <h3 class="price-note-title">其他說明</h3>
+            <ul class="list-disc pl-5 space-y-3 text-gray-600 text-sm md:text-base text-justify">
+              <li>包棟服務歡迎直接洽詢 LINE 客服</li>
+              <li>加床服務：NT$ 800 / 人 (含清潔與備品)</li>
+              <li>春節期間與連續假期價格另計</li>
+              <li>為響應環保，請自備個人盥洗用品</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <p class="mt-6 text-sm text-gray-400 text-center tracking-widest">※ 房價可能隨季節調整，請以預約時告知之價格為準</p>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-center text-3xl font-medium mb-16 tracking-widest">訂房須知與規定</h2>
+      
+      <div class="mb-12">
+        <h3 class="policy-header text-xl">訂房須知</h3>
+        <div class="policy-box reading">
+          <ul class="list-disc pl-5 space-y-3 text-gray-600 text-justify">
+            <li>預訂後請於 2 日內匯入訂金 (房價 50%)，逾期將自動取消。</li>
+            <li>如欲更改日期，請於住房日 7 天前告知，可保留訂金三個月。</li>
+            <li>配合政府減塑政策，不主動提供一次性備品（牙刷、牙膏、刮鬍刀等）。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="policy-header text-xl">住房須知</h3>
+        <div class="policy-box reading">
+          <ul class="list-disc pl-5 space-y-3 text-gray-600 text-justify">
+            <li>Check-in 時間：15:00 後 / Check-out 時間：11:00 前。</li>
+            <li>室內全面禁菸、禁嚼檳榔，如經發現需加收清潔費 NT$3,000。</li>
+            <li>晚上 22:00 後請降低音量，維護其他住客與社區安寧。</li>
+            <li>為了住宿品質與安全，嚴禁攜帶寵物入內，敬請配合。</li>
           </ul>
         </div>
       </div>
@@ -198,42 +314,41 @@
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
       <div>
         <h4 class="text-2xl font-light mb-6 tracking-widest">煦願民宿</h4>
-        <div class="space-y-2 text-stone-400 text-sm">
-          <p>宜蘭縣民宿2387號</p>
-          <p>266 宜蘭縣三星鄉大埔中路233巷91弄17號</p>
-          <p>E-MAIL: wish23317@gmail.com</p>
-        </div>
+        <p class="text-stone-400 text-sm leading-loose">
+          宜蘭縣民宿 2387 號<br>宜蘭縣三星鄉大埔中路 233 巷 91 弄 17 號<br>LINE預約：@760hpexb
+        </p>
       </div>
-      <div class="flex flex-col md:items-end justify-center">
+      <div class="md:text-right flex flex-col md:items-end justify-center">
         <div class="flex gap-6 mb-6">
-          <a href="https://line.me/R/ti/p/@760hpexb" class="text-3xl hover:text-[#4cc764] transition"><i class="fab fa-line"></i></a>
+          <a href="https://line.me/R/ti/p/@760hpexb" class="text-3xl hover:text-green-400 transition"><i class="fab fa-line"></i></a>
           <a href="https://maps.app.goo.gl/1UWWtTmhoLyNzZSS8" class="text-3xl hover:text-[#B06B58] transition"><i class="fas fa-map-marked-alt"></i></a>
         </div>
-        <p class="text-xs text-stone-500 italic">遠眺群山、俯瞰水田，享受片刻靜好時光</p>
       </div>
     </div>
-    <p class="text-center mt-12 text-xs opacity-30">© 2026 WISH HOMESTAY. ALL RIGHTS RESERVED.</p>
   </footer>
 
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <div class="relative max-w-4xl p-4 text-center">
-      <img id="lightboxImg" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl mx-auto">
-      <p id="lightboxCap" class="text-white mt-4 tracking-widest font-light"></p>
+  <div id="psLightbox" class="ps-lightbox" aria-hidden="true">
+    <div class="ps-lightbox-backdrop" onclick="closeLightbox()"></div>
+    <div class="ps-lightbox-panel">
+      <button class="ps-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+      <figure class="ps-figure">
+        <img id="psLightboxImg" src="">
+        <figcaption id="psLightboxCap" class="ps-caption"></figcaption>
+      </figure>
     </div>
   </div>
 
   <script>
     function openLightbox(url, cap) {
-      document.getElementById('lightboxImg').src = url;
-      document.getElementById('lightboxCap').innerText = cap;
-      document.getElementById('lightbox').classList.add('active');
+      document.getElementById('psLightboxImg').src = url;
+      document.getElementById('psLightboxCap').innerText = cap;
+      document.getElementById('psLightbox').classList.add('is-open');
       document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-      document.body.style.overflow = 'auto';
+      document.getElementById('psLightbox').classList.remove('is-open');
+      document.body.style.overflow = '';
     }
   </script>
-
 </body>
 </html>
