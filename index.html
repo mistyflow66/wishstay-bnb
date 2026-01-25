@@ -32,7 +32,6 @@
       --reading-color: #4b5563;
     }
     
-    /* 房型介紹平滑滑動 */
     html { scroll-behavior: smooth; }
     
     body { 
@@ -47,7 +46,6 @@
     .text-justify { text-align: left; }
     @media (min-width: 768px) { .text-justify { text-align: justify; text-justify: inter-ideograph; } }
 
-    /* Room Rows */
     .room-row { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; margin-bottom: 2rem; }
     .room-img-wrapper { position: relative; width: 100%; height: 250px; overflow: hidden; }
     .slider-container { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
@@ -59,16 +57,15 @@
       .room-content-wrapper { width: 45%; display: flex; flex-direction: column; justify-content: center; }
     }
     .tag { display: inline-block; padding: 6px 14px; background-color: #f3f4f6; border-radius: 4px; font-size: 0.95rem; margin-right: 8px; margin-bottom: 8px; color: #4b5563; }
-   /* Banner */
+    
     .banner-section { 
       height: 60vh; min-height: 450px; display: flex; align-items: center; justify-content: center;
       background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/building.webp');
       background-size: cover; 
-      background-position: center; /* 手機版預設置中 */
+      background-position: center; 
       color: white; text-align: center;
     }
 
-    /* 電腦版微調：將圖片視角下移至重點區域 */
     @media (min-width: 768px) {
       .banner-section {
         background-position: center 72%; 
@@ -80,22 +77,6 @@
     .btn-outline { border: 1px solid white; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(4px); transition: all 0.3s ease; }
     .btn-outline:hover { background-color: white; color: black; }
 
-    /* Room Rows */
-    .room-row { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; margin-bottom: 2rem; }
-    
-    /* 滑動動畫核心 CSS */
-    .room-img-wrapper { position: relative; width: 100%; height: 250px; overflow: hidden; }
-    .slider-container { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
-    .slider-container img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
-
-    @media (min-width: 768px) {
-      .room-row { flex-direction: row; min-height: 420px; align-items: stretch; }
-      .room-img-wrapper { width: 55%; min-height: 420px; height: auto; }
-      .room-content-wrapper { width: 45%; display: flex; flex-direction: column; justify-content: center; }
-    }
-    .tag { display: inline-block; padding: 6px 14px; background-color: #f3f4f6; border-radius: 4px; font-size: 0.95rem; margin-right: 8px; margin-bottom: 8px; color: #4b5563; }
-
-    /* Price Table & Grid */
     .price-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
     @media (min-width: 1024px) { .price-grid { grid-template-columns: 2fr 1fr; align-items: stretch; } }
     .price-table-wrap { height: 100%; overflow: hidden; border-radius: 14px; border: 1px solid #e5e7eb; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,.05); }
@@ -106,14 +87,11 @@
     .price-note-card { height: 100%; border-radius: 14px; border: 1px solid #e5e7eb; background: #fff; padding: 24px; box-shadow: 0 6px 18px rgba(0,0,0,.05); }
     .price-note-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; border-left: 4px solid var(--primary-brick); padding-left: 12px; }
 
-    /* Policy 樣式 */
     .policy-header { border-left: 4px solid var(--primary-brick); padding-left: 1rem; margin-bottom: 1.5rem; font-weight: 700; color: #1f2937; }
     .policy-box { background: #f9fafb; border: 1px solid #eef2f7; border-radius: 14px; padding: 25px; margin-bottom: 2rem; }
 
-    /* Card Shadow for Reviews */
     .card-shadow { box-shadow: 0 6px 16px rgb(0 0 0 / 0.12), 0 20px 32px rgb(0 0 0 / 0.08); }
 
-    /* Gallery & Lightbox */
     .ps-gallery .ps-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,.08); background: #eee; }
     .ps-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
     .ps-item:hover img { transform: scale(1.08); }
@@ -126,6 +104,31 @@
     #psLightboxImg { width: 100%; height: auto; max-height: 70vh; object-fit: contain; }
     .ps-caption { padding: 15px; color: #fff; text-align: center; background: rgba(0,0,0,0.5); }
     .ps-close { position:absolute; top: 18px; right: 18px; color:#fff; font-size: 24px; z-index: 10; cursor: pointer; }
+
+    /* Back to Top 懸浮按鈕 */
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 50;
+    }
+    #backToTop.show { opacity: 1; visibility: visible; }
+    #backToTop:hover { background: var(--primary-brick); transform: translateY(-3px); }
   </style>
 </head>
 
@@ -138,8 +141,7 @@
       <div class="flex flex-col md:flex-row items-center justify-center gap-4">
         <a href="#room-201-anchor" class="btn-outline w-full md:w-auto text-white px-8 py-3 rounded-full text-base font-medium tracking-widest">房型介紹</a>
         <a href="https://line.me/R/ti/p/@760hpexb" target="_blank" class="btn-brick w-full md:w-auto text-white px-10 py-3 rounded-full text-lg font-medium shadow-lg tracking-widest">立即預訂</a>
-  <a href="https://sites.google.com/view/wish23317/transportation?authuser=0" target="_blank" class="btn-outline w-full md:w-auto text-white px-8 py-3 rounded-full text-base font-medium tracking-widest">交通資訊</a>
-</div>
+        <a href="https://sites.google.com/view/wish23317/transportation?authuser=0" target="_blank" class="btn-outline w-full md:w-auto text-white px-8 py-3 rounded-full text-base font-medium tracking-widest">交通資訊</a>
       </div>
     </div>
   </section>
@@ -197,133 +199,126 @@
   </section>
 
   <section class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16">
-  
-  <article id="room-201-anchor" class="room-row">
-    <div class="room-img-wrapper" onclick="if(window.innerWidth < 768) changeImg('201', 1)">
-      <div id="img-201" class="slider-container" data-index="0" data-count="3">
-        <img src="images/201_bed.webp" alt="201">
-        <img src="images/201_sofa.webp" alt="201">
-        <img src="images/201_bathroom.webp" alt="201">
+    <article id="room-201-anchor" class="room-row">
+      <div class="room-img-wrapper" onclick="if(window.innerWidth < 768) changeImg('201', 1)">
+        <div id="img-201" class="slider-container" data-index="0" data-count="3">
+          <img src="images/201_bed.webp" alt="201">
+          <img src="images/201_sofa.webp" alt="201">
+          <img src="images/201_bathroom.webp" alt="201">
+        </div>
+        <div class="hidden md:flex absolute inset-0 items-center justify-between px-2 pointer-events-none">
+          <button onclick="event.stopPropagation(); changeImg('201', -1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
+            <i class="fa-solid fa-chevron-left text-sm"></i>
+          </button>
+          <button onclick="event.stopPropagation(); changeImg('201', 1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </button>
+        </div>
+        <div class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
+          <span id="count-201">1</span> / 3
+        </div>
       </div>
-      <div class="hidden md:flex absolute inset-0 items-center justify-between px-2 pointer-events-none">
-        <button onclick="event.stopPropagation(); changeImg('201', -1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
-          <i class="fa-solid fa-chevron-left text-sm"></i>
-        </button>
-        <button onclick="event.stopPropagation(); changeImg('201', 1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
-          <i class="fa-solid fa-chevron-right text-sm"></i>
-        </button>
+      <div class="room-content-wrapper p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-medium mb-2 text-gray-800">201 雙人房</h3>
+        <div class="reading"><p class="text-base text-justify">兩人的溫馨角落，一人也自在的輕旅行首選。</p></div>
+        <div class="flex items-center gap-6 my-4 text-gray-500 text-sm">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-wifi"></i> WiFi</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-ban-smoking"></i> 禁菸</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-user-group"></i> 1-2人</span>
+        </div>
+        <div class="mb-6 flex flex-wrap gap-2">
+          <span class="tag">1張加大雙人床 (182×188cm)</span>
+          <span class="tag">26平方公尺 (附陽台)</span>
+          <span class="tag">43吋電視</span>
+          <span class="tag">冷暖空調</span>
+          <span class="tag">乾濕分離衛浴</span>
+          <span class="tag">單人沙發床 (可加床)</span>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
       </div>
-      <div class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
-        <span id="count-201">1</span> / 3
-      </div>
-    </div>
-    <div class="room-content-wrapper p-8 md:p-12">
-      <h3 class="text-2xl md:text-3xl font-medium mb-2 text-gray-800">201 雙人房</h3>
-      <div class="reading"><p class="text-base text-justify">兩人的溫馨角落，一人也自在的輕旅行首選。</p></div>
-      
-      <div class="flex items-center gap-6 my-4 text-gray-500 text-sm">
-        <span class="flex items-center gap-2"><i class="fa-solid fa-wifi"></i> WiFi</span>
-        <span class="flex items-center gap-2"><i class="fa-solid fa-ban-smoking"></i> 禁菸</span>
-        <span class="flex items-center gap-2"><i class="fa-solid fa-user-group"></i> 1-2人</span>
-      </div>
+    </article>
 
-      <div class="mb-6 flex flex-wrap gap-2">
-        <span class="tag">1張加大雙人床 (182×188cm)</span>
-        <span class="tag">26平方公尺 (附陽台)</span>
-        <span class="tag">43吋電視</span>
-        <span class="tag">冷暖空調</span>
-        <span class="tag">乾濕分離衛浴</span>
-        <span class="tag">單人沙發床 (可加床)</span>
+    <article class="room-row">
+      <div class="room-img-wrapper" onclick="if(window.innerWidth < 768) changeImg('202', 1)">
+        <div id="img-202" class="slider-container" data-index="0" data-count="3">
+          <img src="images/202_bed.webp" alt="202">
+          <img src="images/202_tv.webp" alt="202">
+          <img src="images/202_bathroom.webp" alt="202">
+        </div>
+        <div class="hidden md:flex absolute inset-0 items-center justify-between px-2 pointer-events-none">
+          <button onclick="event.stopPropagation(); changeImg('202', -1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
+            <i class="fa-solid fa-chevron-left text-sm"></i>
+          </button>
+          <button onclick="event.stopPropagation(); changeImg('202', 1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </button>
+        </div>
+        <div class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
+          <span id="count-202">1</span> / 3
+        </div>
       </div>
-      <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
-    </div>
-  </article>
+      <div class="room-content-wrapper p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-medium mb-2 text-gray-800">202 四人房</h3>
+        <div class="reading"><p class="text-base text-justify">機能雙床配置，讓好友與親子輕鬆同住、共享回憶。</p></div>
+        <div class="flex items-center gap-6 my-4 text-gray-500 text-sm">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-wifi"></i> WiFi</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-ban-smoking"></i> 禁菸</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-user-group"></i> 2-4人</span>
+        </div>
+        <div class="mb-6 flex flex-wrap gap-2">
+          <span class="tag">2張標準雙人床 (152×188cm)</span>
+          <span class="tag">30平方公尺 (附陽台)</span>
+          <span class="tag">43吋電視</span>
+          <span class="tag">冷暖空調</span>
+          <span class="tag">乾濕分離衛浴</span>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
+      </div>
+    </article>
 
-  <article class="room-row">
-    <div class="room-img-wrapper" onclick="if(window.innerWidth < 768) changeImg('202', 1)">
-      <div id="img-202" class="slider-container" data-index="0" data-count="3">
-        <img src="images/202_bed.webp" alt="202">
-        <img src="images/202_tv.webp" alt="202">
-        <img src="images/202_bathroom.webp" alt="202">
+    <article class="room-row">
+      <div class="room-img-wrapper" onclick="if(window.innerWidth < 768) changeImg('301', 1)">
+        <div id="img-301" class="slider-container" data-index="0" data-count="5">
+          <img src="images/301_bed.webp" alt="301">
+          <img src="images/301_bar.webp" alt="301">
+          <img src="images/301_bathtub.webp" alt="301">
+          <img src="images/301_sink.webp" alt="301">
+          <img src="images/301_towel.webp" alt="301">
+        </div>
+        <div class="hidden md:flex absolute inset-0 items-center justify-between px-2 pointer-events-none">
+          <button onclick="event.stopPropagation(); changeImg('301', -1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
+            <i class="fa-solid fa-chevron-left text-sm"></i>
+          </button>
+          <button onclick="event.stopPropagation(); changeImg('301', 1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
+            <i class="fa-solid fa-chevron-right text-sm"></i>
+          </button>
+        </div>
+        <div class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
+          <span id="count-301">1</span> / 5
+        </div>
       </div>
-      <div class="hidden md:flex absolute inset-0 items-center justify-between px-2 pointer-events-none">
-        <button onclick="event.stopPropagation(); changeImg('202', -1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
-          <i class="fa-solid fa-chevron-left text-sm"></i>
-        </button>
-        <button onclick="event.stopPropagation(); changeImg('202', 1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
-          <i class="fa-solid fa-chevron-right text-sm"></i>
-        </button>
+      <div class="room-content-wrapper p-8 md:p-12">
+        <h3 class="text-2xl md:text-3xl font-medium mb-2 text-gray-800">301 八人房</h3>
+        <div class="reading"><p class="text-base text-justify">包層寬敞空間，大夥兒聚會派對的自由首選。</p></div>
+        <div class="flex items-center gap-6 my-4 text-gray-500 text-sm">
+          <span class="flex items-center gap-2"><i class="fa-solid fa-wifi"></i> WiFi</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-ban-smoking"></i> 禁菸</span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-user-group"></i> 4-8人</span>
+        </div>
+        <div class="mb-6 flex flex-wrap gap-2">
+          <span class="tag">2張標準雙人床</span>
+          <span class="tag">2張加大雙人床</span>
+          <span class="tag">66平方公尺 (附陽台)</span>
+          <span class="tag">65吋大電視</span>
+          <span class="tag">冷暖空調</span>
+          <span class="tag">乾濕分離衛浴</span>
+          <span class="tag">獨立浴缸</span>
+          <span class="tag">房內吧台</span>
+        </div>
+        <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
       </div>
-      <div class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
-        <span id="count-202">1</span> / 3
-      </div>
-    </div>
-    <div class="room-content-wrapper p-8 md:p-12">
-      <h3 class="text-2xl md:text-3xl font-medium mb-2 text-gray-800">202 四人房</h3>
-      <div class="reading"><p class="text-base text-justify">機能雙床配置，讓好友與親子輕鬆同住、共享回憶。</p></div>
-      
-      <div class="flex items-center gap-6 my-4 text-gray-500 text-sm">
-        <span class="flex items-center gap-2"><i class="fa-solid fa-wifi"></i> WiFi</span>
-        <span class="flex items-center gap-2"><i class="fa-solid fa-ban-smoking"></i> 禁菸</span>
-        <span class="flex items-center gap-2"><i class="fa-solid fa-user-group"></i> 2-4人</span>
-      </div>
-
-      <div class="mb-6 flex flex-wrap gap-2">
-        <span class="tag">2張標準雙人床 (152×188cm)</span>
-        <span class="tag">30平方公尺 (附陽台)</span>
-        <span class="tag">43吋電視</span>
-        <span class="tag">冷暖空調</span>
-        <span class="tag">乾濕分離衛浴</span>
-      </div>
-      <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
-    </div>
-  </article>
-
-  <article class="room-row">
-    <div class="room-img-wrapper" onclick="if(window.innerWidth < 768) changeImg('301', 1)">
-      <div id="img-301" class="slider-container" data-index="0" data-count="5">
-        <img src="images/301_bed.webp" alt="301">
-        <img src="images/301_bar.webp" alt="301">
-        <img src="images/301_bathtub.webp" alt="301">
-        <img src="images/301_sink.webp" alt="301">
-        <img src="images/301_towel.webp" alt="301">
-      </div>
-      <div class="hidden md:flex absolute inset-0 items-center justify-between px-2 pointer-events-none">
-        <button onclick="event.stopPropagation(); changeImg('301', -1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
-          <i class="fa-solid fa-chevron-left text-sm"></i>
-        </button>
-        <button onclick="event.stopPropagation(); changeImg('301', 1)" class="pointer-events-auto bg-white/70 hover:bg-white text-gray-800 w-9 h-9 rounded-full shadow-md transition flex items-center justify-center">
-          <i class="fa-solid fa-chevron-right text-sm"></i>
-        </button>
-      </div>
-      <div class="absolute bottom-3 right-3 bg-black/40 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
-        <span id="count-301">1</span> / 5
-      </div>
-    </div>
-    <div class="room-content-wrapper p-8 md:p-12">
-      <h3 class="text-2xl md:text-3xl font-medium mb-2 text-gray-800">301 八人房</h3>
-      <div class="reading"><p class="text-base text-justify">包層寬敞空間，大夥兒聚會派對的自由首選。</p></div>
-      
-      <div class="flex items-center gap-6 my-4 text-gray-500 text-sm">
-        <span class="flex items-center gap-2"><i class="fa-solid fa-wifi"></i> WiFi</span>
-        <span class="flex items-center gap-2"><i class="fa-solid fa-ban-smoking"></i> 禁菸</span>
-        <span class="flex items-center gap-2"><i class="fa-solid fa-user-group"></i> 4-8人</span>
-      </div>
-
-      <div class="mb-6 flex flex-wrap gap-2">
-        <span class="tag">2張標準雙人床</span>
-        <span class="tag">2張加大雙人床</span>
-        <span class="tag">66平方公尺 (附陽台)</span>
-        <span class="tag">65吋大電視</span>
-        <span class="tag">冷暖空調</span>
-        <span class="tag">乾濕分離衛浴</span>
-        <span class="tag">獨立浴缸</span>
-        <span class="tag">房內吧台</span>
-      </div>
-      <a href="https://line.me/R/ti/p/@760hpexb" class="btn-brick block md:inline-block text-center text-white px-10 py-3 rounded-md font-medium">查看空房</a>
-    </div>
-  </article>
-</section>
+    </article>
+  </section>
 
   <section class="py-16 md:py-24 px-6 bg-white">
     <div class="max-w-6xl mx-auto text-center">
@@ -409,7 +404,7 @@
             <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>親友同樂：</strong>電動麻將桌、藍芽歡唱</li>
             <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>兒童最愛：</strong>跳跳馬、多款精選桌遊</li>
             <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>戶外空間：</strong>專屬停車位、獨立陽台</li>
-		<li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>烤肉設施：</strong>器具齊全、可代訂食材</li>
+            <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>烤肉設施：</strong>器具齊全、可代訂食材</li>
           </ul>
         </div>
       </div>
@@ -487,6 +482,10 @@
     </div>
   </footer>
 
+  <button id="backToTop" onclick="scrollToTop()" title="回頂端">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
   <div id="psLightbox" class="ps-lightbox" aria-hidden="true">
     <div class="ps-lightbox-backdrop" onclick="closeLightbox()"></div>
     <div class="ps-lightbox-panel">
@@ -499,6 +498,20 @@
   </div>
 
   <script>
+    // 滾動顯示按鈕與回到頂端邏輯
+    window.addEventListener('scroll', function() {
+      const btn = document.getElementById('backToTop');
+      if (window.pageYOffset > 300) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     function openLightbox(url, cap) {
       document.getElementById('psLightboxImg').src = url;
       document.getElementById('psLightboxCap').innerText = cap;
