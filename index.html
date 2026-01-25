@@ -113,6 +113,11 @@
     .ps-prev { left: 15px; }
     .ps-next { right: 15px; }
 
+    /* 手機版隱藏箭頭 */
+    @media (max-width: 768px) {
+      .ps-nav-btn { display: none !important; }
+    }
+
     /* Back to Top 懸浮按鈕 */
     #backToTop {
       position: fixed;
@@ -172,7 +177,7 @@
           </div>
           <h4 class="text-xl font-medium mb-4">房內設備</h4>
           <ul class="text-gray-500 text-base space-y-2">
-            <li>冷暖空調、吹風機</li>
+            <li>冷暖空調、吹機</li>
             <li>有線電視頻道、Youtube</li>
             <li>沙威隆沐浴組、大小毛巾</li>
             <li>全館無線WIFI上網</li>
@@ -503,7 +508,7 @@
     <div class="ps-lightbox-panel">
       <button class="ps-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
       <figure class="ps-figure">
-        <img id="psLightboxImg" src="">
+        <img id="psLightboxImg" src="" onclick="handleImageClick(event)">
         <figcaption id="psLightboxCap" class="ps-caption"></figcaption>
       </figure>
     </div>
@@ -560,6 +565,19 @@
       if (currentGalleryIndex >= galleryImages.length) currentGalleryIndex = 0;
       if (currentGalleryIndex < 0) currentGalleryIndex = galleryImages.length - 1;
       updateLightboxContent();
+    }
+
+    // 手機版點擊圖片左右側換圖邏輯
+    function handleImageClick(e) {
+      if (window.innerWidth < 768) {
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left; // 點擊位置距離圖片左邊的距離
+        if (x < rect.width / 2) {
+          changeGalleryImg(-1); // 點左半邊：上一張
+        } else {
+          changeGalleryImg(1);  // 點右半邊：下一張
+        }
+      }
     }
 
     function closeLightbox() {
