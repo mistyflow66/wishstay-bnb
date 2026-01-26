@@ -4,7 +4,6 @@
         const mainFab = document.getElementById('main-fab');
         const fabIcon = document.getElementById('fab-icon');
 
-        // 偵測滾動：閒置半透明與 ScrollSpy 底色切換
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 fabContainer.classList.add('show');
@@ -19,10 +18,9 @@
                 fabContainer.classList.remove('show');
                 closeFab();
             }
-            spyScroll(); // 執行偵測位置
+            spyScroll();
         });
 
-        // 點擊螢幕外面自動關閉選單
         document.addEventListener('click', function(event) {
             const isClickInside = fabContainer.contains(event.target);
             if (!isClickInside && fabMenu.classList.contains('open')) {
@@ -31,7 +29,7 @@
         });
 
         function handleFabClick(e) {
-            if (event) event.stopPropagation(); // 防止點擊按鈕觸發 document 的關閉邏輯
+            if (event) event.stopPropagation();
             if (window.innerWidth < 768) {
                 const isOpen = fabMenu.classList.contains('open');
                 if (isOpen) {
@@ -58,7 +56,6 @@
             closeFab();
         }
 
-        // 偵測目前頁面在哪裡，並對應選單底色
         function spyScroll() {
             const sections = [
                 { id: 'about-us', name: '#about-us' },
@@ -71,10 +68,8 @@
                 { id: 'pricing', name: '#pricing' },
                 { id: 'policy', name: '#policy' }
             ];
-
             let currentSection = "";
-            const threshold = window.innerHeight * 0.3; // 偵測點位於畫面頂部 30% 處
-
+            const threshold = window.innerHeight * 0.3;
             sections.forEach(sec => {
                 const element = document.getElementById(sec.id);
                 if (element) {
@@ -84,8 +79,6 @@
                     }
                 }
             });
-
-            // 更新選單項目的 class
             const menuItems = document.querySelectorAll('.menu-item');
             menuItems.forEach(item => {
                 item.classList.remove('active-menu');
@@ -95,7 +88,6 @@
             });
         }
 
-        // 藝廊燈箱邏輯
         let currentGalleryIndex = 0;
         let galleryImages = [];
         function initGallery() {
@@ -128,23 +120,32 @@
             if (currentGalleryIndex < 0) currentGalleryIndex = galleryImages.length - 1;
             updateLightboxContent();
         }
+        function handleImageClick(event) {
+            if (window.innerWidth < 768) {
+                const rect = event.target.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                if (x < rect.width / 2) {
+                    changeGalleryImg(-1);
+                } else {
+                    changeGalleryImg(1);
+                }
+            }
+        }
         function closeLightbox() {
             document.getElementById('psLightbox').classList.remove('is-open');
             document.body.style.overflow = '';
         }
-        function handleImageClick(e) { e.stopPropagation(); }
 
-        // 房型圖片輪播邏輯
-        function changeImg(id, direction) {
-            const slider = document.getElementById('img-' + id);
-            const countDisplay = document.getElementById('count-' + id);
-            let index = parseInt(slider.getAttribute('data-index'));
-            const total = parseInt(slider.getAttribute('data-count'));
+        function changeImg(roomId, direction) {
+            const container = document.getElementById(`img-${roomId}`);
+            const countSpan = document.getElementById(`count-${roomId}`);
+            let index = parseInt(container.getAttribute('data-index'));
+            const count = parseInt(container.getAttribute('data-count'));
             index += direction;
-            if (index >= total) index = 0;
-            if (index < 0) index = total - 1;
-            slider.style.transform = `translateX(-${index * 100}%)`;
-            slider.setAttribute('data-index', index);
-            countDisplay.innerText = index + 1;
+            if (index >= count) index = 0;
+            if (index < 0) index = count - 1;
+            container.setAttribute('data-index', index);
+            container.style.transform = `translateX(-${index * 100}%)`;
+            countSpan.innerText = index + 1;
         }
 </script></body></html>
