@@ -132,22 +132,19 @@
             document.getElementById('psLightbox').classList.remove('is-open');
             document.body.style.overflow = '';
         }
-        function handleImageClick(e) {
-            e.stopPropagation();
-            const clickX = e.clientX;
-            const screenWidth = window.innerWidth;
-            if (clickX > screenWidth / 2) changeGalleryImg(1);
-            else changeGalleryImg(-1);
-        }
+        function handleImageClick(e) { e.stopPropagation(); }
 
-        // 房型輪播邏輯
-        function changeImg(roomId, direction) {
-            const container = document.getElementById('img-' + roomId);
-            const countEl = document.getElementById('count-' + roomId);
-            let idx = parseInt(container.getAttribute('data-index'));
-            const count = parseInt(container.getAttribute('data-count'));
-            idx = (idx + direction + count) % count;
-            container.style.transform = `translateX(-${idx * 100}%)`;
-            container.setAttribute('data-index', idx);
-            countEl.innerText = idx + 1;
-        }</script></body></html><div><h3 class="policy-header text-xl">住房須知</h3><div class="policy-box reading"><ul class="list-disc pl-5 space-y-3 text-gray-600 text-justify"><li>入住時間為 15:00 後，退房時間為 11:00 前（請務必交還房門鑰匙）。</li><li>電視配備 Netflix (需自備帳號) 與 YouTube，為保障個資隱私，退房前請務必自行登出。</li><li>為維護住宿品質，全館禁帶寵物入住。</li><li>配合政府減塑政策，不主動提供一次用備品（牙刷、牙膏、刮鬍刀等）。</li><li>電動麻將桌及藍芽音箱為包棟設施，若需使用請提前告知。</li><li>若需自助入住，可於入住前完成餘額匯款，後續將透過 Line 告知入住密碼。</li><li>全館禁止室內抽菸、嚼檳榔、吸毒或轟趴，違者須照價賠償損壞。</li><li>晚間 10 點後請勿於戶外大聲喧嘩，避免產生政府罰鍰。</li><li>貴重物品請妥善保管，遺失恕不理賠；代寄遺忘物將酌收運費。</li><li>進出大門請隨手關門，以維護環境並避免蚊蟲飛入。</li></ul></div></div>
+        // 房型圖片輪播邏輯
+        function changeImg(id, direction) {
+            const slider = document.getElementById('img-' + id);
+            const countDisplay = document.getElementById('count-' + id);
+            let index = parseInt(slider.getAttribute('data-index'));
+            const total = parseInt(slider.getAttribute('data-count'));
+            index += direction;
+            if (index >= total) index = 0;
+            if (index < 0) index = total - 1;
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            slider.setAttribute('data-index', index);
+            countDisplay.innerText = index + 1;
+        }
+</script></body></html>
