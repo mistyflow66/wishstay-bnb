@@ -29,12 +29,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hd_rainbow.webp');
+            /* 修改圖片路徑為 yilan.webp */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/yilan.webp');
             background-size: cover;
+            /* 電腦版正常置中裁切 */
             background-position: center;
             color: #fff;
             text-align: center;
         }
+
+        /* 手機版設定：右邊數來第二塊 (100% - 12.5% = 87.5%) */
+        @media (max-width: 768px) {
+            .banner-section {
+                background-position: 87.5% center;
+            }
+        }
+
         .btn-brick {
             background-color: var(--primary-brick);
             transition: all 0.3s ease;
