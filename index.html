@@ -124,10 +124,11 @@
             document.getElementById('psLightbox').classList.remove('is-open');
             document.body.style.overflow = 'auto';
        }
-        
+    
         function handleImageClick(event) {
             event.stopPropagation(); 
 
+            // 判斷是否為手機/平板版 (寬度 768px 以下)
             if (window.innerWidth <= 768) {
                 const img = event.target;
                 const rect = img.getBoundingClientRect();
@@ -136,9 +137,11 @@
                 if (clickX < rect.width / 2) {
                     changeGalleryImg(-1);
                 } else {
+                   
                     changeGalleryImg(1);
                 }
             }
+          
         }
 
         function closeLightbox() {
