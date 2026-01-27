@@ -1362,7 +1362,7 @@
         background: var(--primary-brick);
     }
 }
-</style>F
+</style>
 </head>
 <body>
     <section class="banner-section">
@@ -1839,24 +1839,22 @@
             document.getElementById('psLightbox').classList.remove('is-open');
             document.body.style.overflow = 'auto';
        }
-     
+        
         function handleImageClick(event) {
             event.stopPropagation(); 
 
-           
             if (window.innerWidth <= 768) {
                 const img = event.target;
                 const rect = img.getBoundingClientRect();
-                const clickX = event.clientX - rect.left;
+                const clickX = event.clientX - rect.left; 
 
                 if (clickX < rect.width / 2) {
                     changeGalleryImg(-1);
                 } else {
-                   
                     changeGalleryImg(1);
                 }
             }
-       
+         
         }
 
         function closeLightbox() {
