@@ -984,6 +984,45 @@
     color: #4b5563;
 }
 
+  .facility-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .facility-item {
+    display: flex;
+    align-items: flex-start; /* 確保多行時打勾維持在第一行 */
+    gap: 0.5rem;
+  }
+
+  .check-icon {
+    flex: 0 0 auto;
+    color: #16a34a;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.8; /* 關鍵：讓打勾的行高跟右邊文字 (line-height: 1.8) 完全一致！ */
+    margin-top: 0;   /* 移除之前的微調，歸零 */
+  }
+
+  .facility-text {
+    color: #4b5563;
+    line-height: 1.8;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .facility-label {
+    font-weight: 700;
+    color: #374151;
+    flex-shrink: 0;
+  }
+
+  .facility-content {
+    color: #4b5563;
+    flex: 1;
+  }
+
 .banner-section {
     height: 60vh;
     min-height: 450px;
@@ -1560,21 +1599,69 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100">
                     <h3 class="text-xl font-bold mb-4 text-[#B06B58]"><i class="fa-solid fa-couch mr-2"></i>寬敞客廳與吧台</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>影音饗宴：</strong>65吋電視、聚會大長桌</li>
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>悠閒茶敘：</strong>飲水機、點心茶包招待</li>
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>備餐空間：</strong>大容量冰箱、碗盤餐具</li>
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>輕食廚房：</strong>提供IH爐、鍋具可煮火鍋</li>
-                    </ul>
+            <div class="facility-list">
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">影音饗宴：</span>
+                  <span class="facility-content">65吋電視、聚會大長桌</span>
+                </div>
+              </div>
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">悠閒茶敘：</span>
+                  <span class="facility-content">飲水機、點心茶包招待</span>
+                </div>
+              </div>
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">備餐空間：</span>
+                  <span class="facility-content">大容量冰箱、碗盤餐具</span>
+                </div>
+              </div>
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">輕食廚房：</span>
+                  <span class="facility-content">提供IH爐、鍋具可煮火鍋</span>
+                </div>
+              </div>
+            </div>
                 </div>
                 <div class="bg-stone-50 p-8 rounded-2xl border border-stone-100">
                     <h3 class="text-xl font-bold mb-4 text-[#B06B58]"><i class="fa-solid fa-gamepad mr-2"></i>娛樂與親子友善</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>親友同樂：</strong>電動麻將桌、藍芽歡唱</li>
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>兒童最愛：</strong>跳跳馬、精選桌遊、Switch</li>
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>戶外空間：</strong>專屬停車位、獨立陽台</li>
-                        <li><i class="fa-solid fa-check text-green-600 mr-2"></i><strong>烤肉設施：</strong>器具齊全、可代訂食材</li>
-                    </ul>
+            <div class="facility-list">
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">親友同樂：</span>
+                  <span class="facility-content">電動麻將桌、藍芽歡唱</span>
+                </div>
+              </div>
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">兒童最愛：</span>
+                  <span class="facility-content">跳跳馬、精選桌遊、Switch 遊戲機</span>
+                </div>
+              </div>
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">戶外空間：</span>
+                  <span class="facility-content">專屬停車位、獨立陽台</span>
+                </div>
+              </div>
+              <div class="facility-item">
+                <span class="check-icon">✓</span>
+                <div class="facility-text">
+                  <span class="facility-label">烤肉設施：</span>
+                  <span class="facility-content">器具齊全、可代訂食材</span>
+                </div>
+              </div>
+            </div>
                 </div>
             </div>
         </div>
